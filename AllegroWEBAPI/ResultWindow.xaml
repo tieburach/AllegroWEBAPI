@@ -1,0 +1,21 @@
+﻿<Window x:Class="AllegroWEBAPI.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AllegroWEBAPI"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <Grid>
+        <Label Content="Cena rozsądna:&#xD;&#xA;" HorizontalAlignment="Left" Margin="41,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.226,0.229" FontSize="20"/>
+        <Button Content="Generuj raporty&#xD;&#xA;" HorizontalAlignment="Left" Margin="599,132,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
+        <TextBox HorizontalAlignment="Left" Text="552 zł" Height="23" Margin="362,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Text="921 zł" Height="23" Margin="362,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Text="728 zł" Height="23" Margin="362,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Cena z ryzykiem braku sprzedaży&#xD;&#xA;" HorizontalAlignment="Left" Margin="41,168,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="Cena minimalna:&#xD;&#xA;" HorizontalAlignment="Left" Margin="41,75,0,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="-0.345,-0.252"/>
+        <Label Content="Podsumowanie" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" FontSize="24"/>
+        <Image HorizontalAlignment="Left" Height="274" Margin="231,208,0,-62" VerticalAlignment="Top" Width="399" Source="wykres.png"/>
+
+    </Grid>
+</Window>
