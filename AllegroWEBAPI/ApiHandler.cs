@@ -1,5 +1,6 @@
 ﻿using AllegroWEBAPI.pl.allegro.webapi;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Net;
@@ -95,29 +96,16 @@ namespace AllegroWEBAPI
                             false, //
                             out itemsFeaturedCount, out itemsFeaturedCountSpecified, out itemsList, out categoriesList, out filtersList, out filtersRejected);
 
-            
-            foreach (var item in itemsList){
-                
-                float cena = item.priceInfo[0].priceValue;
-                string cenaa = cena + "";
-                string waluta = item.priceInfo[0].priceType;
-                string tytul = item.itemTitle;
-                string time = item.timeToEnd;
-                SqlCommand cmd = ThisConnection.CreateCommand();
-                cmd.CommandText = "INSERT INTO AllegroDatabase.dbo.ProductsPrices (price, title, description) VALUES ('" + cenaa.Replace(",", ".") + "', '" + tytul + "', '" + waluta + "')";
-                SqlDataAdapter dr = new SqlDataAdapter();
-                cmd.CommandType = CommandType.Text;
-                dr.InsertCommand = cmd;
-                try
-                {
-                    dr.InsertCommand.ExecuteNonQuery();
-                }
-                catch (SqlException exc) {
-                    Console.Write(exc.StackTrace);
-                }
-                cmd.Dispose();
-    
+
+            List<String> list = new List<String>();
+            for (int i = 0; i< itemsList[0].parametersInfo.Length;i++) { 
+                list.Add(itemsList[0].parametersInfo[i].parameterName);
             }
+            ParameterChooser parameterChooser = new ParameterChooser(list, itemsList);
+            parameterChooser.Show();
+
+            
+
         }
     }
 }

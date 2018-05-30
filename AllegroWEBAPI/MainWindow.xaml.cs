@@ -54,8 +54,6 @@ namespace AllegroWEBAPI
         {
             ApiHandler apiHandler = new ApiHandler();
             apiHandler.findByCategory(currentParentId);
-            Window1 window1 = new Window1();
-            window1.Show();
             this.Close();
 
         }
