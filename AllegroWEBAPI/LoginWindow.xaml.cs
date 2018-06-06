@@ -1,48 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AllegroWEBAPI
 {
 
     public partial class LoginWindow : Window
+
     {
+        BackgroundWorker worker;
         public LoginWindow()
         {
             InitializeComponent();
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ApiHandler.UserLogin = userLogin.Text;
-            ApiHandler.UserPassword = userPassword.Password.ToString();
-            ApiHandler apiHandler = new ApiHandler();
+            ApiHandler.UserLogin = "";
+            ApiHandler.UserPassword = "";
+            ApiHandler apiHandler = new ApiHandler();           
+            ApiHandler.logs.Append("\n Nastąpiło poprawne zalogowanie dla użytkownika o nazwie: " + userLogin.Text + "o godzinie: " + DateTime.Now);
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+
+            //ZMIANY!
+            //wrzucone bo juz nie trzeba sie logowac
+
             try
             {
-                apiHandler.logIntoAllegro();
+                //jeszcze do 05.06 potrzebne
+                //apiHandler.logIntoAllegro();
             }
             catch (Exception exc) {
+                Console.Write(exc.StackTrace);
                 MessageBoxResult result = MessageBox.Show(
                                           "Twój login i/lub hasło są niepoprawne. Spróbuj zalogować się jeszcze raz.", "Wystąpił błąd",
                                           MessageBoxButton.OK,
                                           MessageBoxImage.Warning);
+                ApiHandler.logs.Append("\n Próba zalogowania się niepoprawnym hasłem bądź loginem do allegro WEBAPI. " + DateTime.Now);
                 return;
+     
             }
-            
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Close();
         }
     }
 }

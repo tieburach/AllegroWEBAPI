@@ -11,7 +11,6 @@
         <ComboBox x:Name="parameters" HorizontalAlignment="Left" Margin="122,76,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Wybierz kategorię decyzyjną:
                " HorizontalAlignment="Left" Margin="105,45,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="283,139,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.077,0.459" Click="Button_Click"/>
 
     </Grid>
 </Window>

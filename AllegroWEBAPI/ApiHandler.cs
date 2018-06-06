@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace AllegroWEBAPI
 {
@@ -21,7 +22,13 @@ namespace AllegroWEBAPI
 
             return true;
         }
-        private static SqlConnection thisConnection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        private static SqlConnection thisConnection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;" +
+            "Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;" +
+            "MultiSubnetFailover=False");
+
+       
+
+        public static StringBuilder logs = new StringBuilder("Początek:\n" + DateTime.Now);
 
         public static SqlConnection ThisConnection { get => thisConnection; set => thisConnection = value; }
         private static String userLogin;
@@ -63,8 +70,6 @@ namespace AllegroWEBAPI
                    versionKey,
                    out hashoffset,
                    out serverTime);
-
-            //findByCategory("Electronics", "");
         }
 
         public void findByCategory(int CategoryId)
@@ -103,9 +108,10 @@ namespace AllegroWEBAPI
             }
             ParameterChooser parameterChooser = new ParameterChooser(list, itemsList);
             parameterChooser.Show();
-
             
-
         }
+
+
     }
+
 }

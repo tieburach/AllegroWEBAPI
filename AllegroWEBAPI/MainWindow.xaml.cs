@@ -26,6 +26,8 @@ namespace AllegroWEBAPI
 
     public partial class MainWindow : Window
     {
+        public static String categoryName;
+        public static String categoryTree;
         private int currentParentId = 0;
         private String currentName;
         private Boolean finished = false;
@@ -35,6 +37,7 @@ namespace AllegroWEBAPI
             InitializeComponent();
 
             string Get_Kategoria = "SELECT Name FROM AllegroDatabase.dbo.Categories WHERE Parent_Id = 0";
+            ApiHandler.logs.Append("\n" + Get_Kategoria + DateTime.Now);
             SqlCommand cmd = ApiHandler.ThisConnection.CreateCommand();
             cmd.CommandText = Get_Kategoria;
 
@@ -52,6 +55,22 @@ namespace AllegroWEBAPI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            this.searchButton.Visibility = Visibility.Hidden;
+            this.progressLabel.Visibility = Visibility.Visible;
+            this.progressBar.Visibility = Visibility.Visible;
+            string query = "SELECT Name FROM AllegroDatabase.dbo.Categories WHERE Id = " + currentParentId;
+            ApiHandler.logs.Append("\n" + query + DateTime.Now);
+            SqlCommand cmd = ApiHandler.ThisConnection.CreateCommand();
+            cmd.CommandText = query;
+            SqlDataReader dr;
+            cmd.CommandType = CommandType.Text;
+            dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                categoryName = (String)(dr.GetValue(0));
+                categoryName = categoryName.Replace(" ", "");
+            }
+            dr.Close();
             ApiHandler apiHandler = new ApiHandler();
             apiHandler.findByCategory(currentParentId);
             this.Close();
@@ -64,7 +83,9 @@ namespace AllegroWEBAPI
             {
                 currentName = this.Kategoria.Text;
                 this.actualChoice.Text += "->" + currentName;
+                ApiHandler.logs.Append("\nWybór kolejnej podkategorii o nazwie: " + currentName);
                 string query = "SELECT sub.Id FROM( SELECT * FROM AllegroDatabase.dbo.Categories cat WHERE cat.Parent_Id = " + currentParentId + " ) sub WHERE sub.Name Like '" + currentName + "'";
+                ApiHandler.logs.Append("\n" + query + DateTime.Now);
                 SqlCommand cmd = ApiHandler.ThisConnection.CreateCommand();
                 cmd.CommandText = query;
                 SqlDataReader dr;
@@ -77,6 +98,7 @@ namespace AllegroWEBAPI
                 dr.Close();
                 this.Kategoria.Items.Clear();
                 query = "SELECT Name FROM AllegroDatabase.dbo.Categories WHERE Parent_Id = " + currentParentId;
+                ApiHandler.logs.Append("\n" + query + DateTime.Now);
                 cmd.CommandText = query;
                 cmd.CommandType = CommandType.Text;
                 dr = cmd.ExecuteReader();
@@ -89,6 +111,8 @@ namespace AllegroWEBAPI
                 if (Kategoria.Items.IsEmpty) {
                     this.Kategoria.Visibility = Visibility.Hidden;
                     this.continueButton.Visibility = Visibility.Hidden;
+                    categoryTree =  this.actualChoice.Text;
+                    categoryTree = categoryTree.Replace("->", "\\");
                 }
 
             }

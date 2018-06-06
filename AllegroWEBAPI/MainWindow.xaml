@@ -7,13 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Margin="0,0,-0.4,0">
-        <Button Content="Wyszukaj" HorizontalAlignment="Left" Margin="263,366,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-2.734,11.181" Height="19" Click="Button_Click"/>
-        <Label Content="Wybierz kategorię produktów:&#xD;&#xA;" HorizontalAlignment="Left" Margin="318,195,0,0" VerticalAlignment="Top" Height="31" Width="200" RenderTransformOrigin="0.547,0.454" FontSize="14"/>
-        <ComboBox Name="Kategoria" HorizontalAlignment="Left" Margin="292,231,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.628,-3.286"/>
-        <Label Content="Aplikacja do wyszukiwania najlepszej ceny produktu korzystając z AllegroWEBAPI." HorizontalAlignment="Left" Margin="182,149,0,0" VerticalAlignment="Top" Width="455" Height="41"/>
-        <Image x:Name="Logo" HorizontalAlignment="Left" Height="139" Margin="263,10,0,0" VerticalAlignment="Top" Width="271" Source="logo.png"/>
-        <Button x:Name="continueButton" Content="continue" HorizontalAlignment="Left" Margin="459,234,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
-        <TextBox x:Name="actualChoice" HorizontalAlignment="Left" Height="57" Margin="263,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="317"/>
-        <Label Content="Twój obecny wybór" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="108,285,0,0" RenderTransformOrigin="0.359,0.444"/>
+        <Button x:Name="searchButton" Content="Wyszukaj" HorizontalAlignment="Left" Margin="371,340,0,0" VerticalAlignment="Top" Width="106" RenderTransformOrigin="-2.734,11.181" Height="29" Click="Button_Click" FontSize="20"/>
+        <Label Content="Wybierz kategorię produktów:&#xD;&#xA;" FontSize="16" HorizontalAlignment="Left" FontWeight="Thin" Margin="47,232,0,0" VerticalAlignment="Top" Height="36" Width="211" RenderTransformOrigin="0.547,0.454"/>
+        <ComboBox Name="Kategoria" HorizontalAlignment="Left" Margin="263,236,0,0" VerticalAlignment="Top" Width="214" RenderTransformOrigin="0.628,-3.286"/>
+        <Label Content="Aplikacja do wyszukiwania najlepszej ceny produktu korzystając z AllegroWEBAPI" FontWeight="Thin" FontSize="20" HorizontalAlignment="Left" Margin="66,177,0,0" VerticalAlignment="Top" Width="688" Height="36"/>
+        <Image x:Name="Logo" HorizontalAlignment="Left" Height="162" Margin="263,10,0,0" VerticalAlignment="Top" Width="317" Source="logo.png"/>
+        <Button x:Name="continueButton" Content="Kontynuuj" HorizontalAlignment="Left" Margin="489,236,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click_1" Height="22"/>
+        <TextBox x:Name="actualChoice" HorizontalAlignment="Left" Height="57" Margin="263,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="317"/>
+        <Label Content="Twój obecny wybór:" FontWeight="Thin"  FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,273,0,0" RenderTransformOrigin="0.359,0.444"/>
+        <Label x:Name="progressLabel" FontSize="15" Content="Trwa wyszukiwanie produktów. Proszę czekać" HorizontalAlignment="Left" Margin="263,365,0,0" VerticalAlignment="Top" Width="317" Visibility="Hidden"/>
+        <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="317" Margin="263,340,0,0" IsIndeterminate="True" Visibility="Hidden"/> 
     </Grid>
 </Window>

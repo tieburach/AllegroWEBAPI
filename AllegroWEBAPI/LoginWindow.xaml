@@ -7,11 +7,13 @@
         mc:Ignorable="d"
         Title="LoginWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Zaloguj" HorizontalAlignment="Left" Margin="344,331,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="-0.087,1.878" Click="Button_Click" FontSize="24"/>
-        <TextBox x:Name="userLogin" HorizontalAlignment="Left" Height="37" Margin="300,129,0,0" TextWrapping="Wrap" Text="tieburach" VerticalAlignment="Top" Width="186" FontSize="24"/>
-        <PasswordBox x:Name="userPassword" HorizontalAlignment="Left" Height="37" Margin="299,289,0,0" VerticalAlignment="Top" Width="203" FontSize="24"/>
-        <Label Content="Podaj swój login:&#xD;&#xA;" HorizontalAlignment="Left" Margin="299,82,0,0" VerticalAlignment="Top" FontSize="24" Height="42"/>
-        <Label Content="Podaj swoje hasło:&#xD;&#xA;" HorizontalAlignment="Left" Margin="299,239,0,0" VerticalAlignment="Top" FontSize="24" Height="45"/>
-
+        <Button x:Name="submitLoginButton" Content="Zaloguj" HorizontalAlignment="Left" Margin="335,326,0,0" VerticalAlignment="Top" Width="131" RenderTransformOrigin="-0.087,1.878" Click="Button_Click" FontSize="24" Height="40"/>
+        <TextBox x:Name="userLogin" HorizontalAlignment="Left" Height="37" Margin="171,165,0,0" TextWrapping="Wrap" Text="tieburach" VerticalAlignment="Top" Width="455" FontSize="24"/>
+        <PasswordBox x:Name="userPassword" HorizontalAlignment="Left" Height="37" Margin="171,257,0,0" VerticalAlignment="Top" Width="455" FontSize="24"/>
+        <Label Content="Podaj swój login:&#xD;&#xA;" HorizontalAlignment="Left" Margin="299,118,0,0" VerticalAlignment="Top" FontSize="24" Height="42"/>
+        <Label Content="Podaj swoje hasło:&#xD;&#xA;" HorizontalAlignment="Left" Margin="299,207,0,0" VerticalAlignment="Top" FontSize="24" Height="45"/>
+        <ProgressBar x:Name="progressLogin" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="455" Margin="171,326,0,0" IsIndeterminate="True" Visibility="Hidden"/>
+        <Label x:Name="labelLogin" Content="Trwa uwierzytelnianie, proszę czekać" FontSize="20" HorizontalAlignment="Left" Margin="244,353,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label Content="Okno logowania do Allegro" HorizontalAlignment="Left" Margin="171,26,0,0" VerticalAlignment="Top" FontSize="35" FontWeight="Black"/>
     </Grid>
 </Window>

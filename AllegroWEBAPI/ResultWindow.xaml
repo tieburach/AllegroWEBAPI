@@ -7,15 +7,21 @@
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
     <Grid>
-        <Label Content="Cena rozsądna:&#xD;&#xA;" HorizontalAlignment="Left" Margin="41,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.226,0.229" FontSize="20"/>
-        <Button Content="Generuj raporty&#xD;&#xA;" HorizontalAlignment="Left" Margin="599,132,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
-        <TextBox HorizontalAlignment="Left" Text="552 zł" Height="23" Margin="362,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Text="921 zł" Height="23" Margin="362,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Text="728 zł" Height="23" Margin="362,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Cena z ryzykiem braku sprzedaży&#xD;&#xA;" HorizontalAlignment="Left" Margin="41,168,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="Cena minimalna:&#xD;&#xA;" HorizontalAlignment="Left" Margin="41,75,0,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="-0.345,-0.252"/>
-        <Label Content="Podsumowanie" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="274" Margin="231,208,0,-62" VerticalAlignment="Top" Width="399" Source="wykres.png"/>
+        <Label Content="Cena rozsądna:&#xD;&#xA;" FontWeight="Thin" HorizontalAlignment="Left" Margin="122,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.226,0.229" FontSize="20" Height="38"/>
+        <Button Content="Microsoft Word" HorizontalAlignment="Left" Margin="512,288,0,0" VerticalAlignment="Top" Width="198" Click="Button_Click" Height="32
+                "/>
+        <TextBox x:Name="minimalPrice" HorizontalAlignment="Left" Text="- zł" Height="30" Margin="512,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" FontSize="18"/>
+        <TextBox x:Name="maximumPrice" HorizontalAlignment="Left" Text="- zł" Height="30" Margin="512,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" FontSize="18"/>
+        <TextBox x:Name="averagePrice"  HorizontalAlignment="Left" Text="- zł" Height="30" Margin="512,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" FontSize="18"/>
+        <Label Content="Cena z ryzykiem braku sprzedaży&#xD;&#xA;" FontWeight="Thin" HorizontalAlignment="Left" Margin="122,190,0,0" VerticalAlignment="Top" FontSize="20" Height="35"/>
+        <Label Content="Cena minimalna:&#xD;&#xA;" FontWeight="Thin" HorizontalAlignment="Left" Margin="122,93,0,0" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="-0.345,-0.252" Height="34"/>
+        <Label Content="Podsumowanie analizy i wygenerowane raporty" FontWeight="DemiBold" HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top" FontSize="28"/>
+        <Button Content="Przeglądarka" HorizontalAlignment="Left" Margin="512,330,0,0" VerticalAlignment="Top" Width="198" RenderTransformOrigin="1.336,1.979" Click="Button_Click_1" Height="32
+                "/>
+        <Label Content="Przejście do widoku dokumentu Word:" FontWeight="Thin" HorizontalAlignment="Left" FontSize="20" Margin="122,285,0,0" VerticalAlignment="Top"/>
+        <Label Content="Przejście do widoku strony internetowej:" FontWeight="Thin" HorizontalAlignment="Left" FontSize="20" Margin="122,325,0,0" VerticalAlignment="Top"/>
+        <GridSplitter HorizontalAlignment="Left" Height="11" VerticalAlignment="Top" Width="794" Margin="0,253,-0.4,0" Background="LightSkyBlue"/>
+        <GridSplitter HorizontalAlignment="Left" Height="11" VerticalAlignment="Top" Width="794" Margin="0,73,-0.4,0" Background="LightSkyBlue"/>
 
     </Grid>
 </Window>

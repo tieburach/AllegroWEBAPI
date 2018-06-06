@@ -3,13 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows;
 
 namespace AllegroWEBAPI
 {
-    /// <summary>
-    /// Logika interakcji dla klasy ParameterChooser.xaml
-    /// </summary>
+
     public partial class ParameterChooser : Window
     {
         List<String> list = new List<String>();
@@ -32,11 +31,6 @@ namespace AllegroWEBAPI
             insertIntoDatabase();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start("CMD.exe", "/C Rscript Script.R");
-        }
-
         private void insertIntoDatabase ()
         {
             bool flag = true;
@@ -50,6 +44,7 @@ namespace AllegroWEBAPI
                 string tytul = item.itemTitle;
                 string time = item.timeToEnd;
                 cmd.CommandText = "INSERT INTO AllegroDatabase.dbo.ProductsPrices (price, title, description, parametervalues) VALUES ('" + cenaa.Replace(",", ".") + "', '" + tytul + "', '" + waluta + "'," + parameter.Replace(",", ".") + ")";
+                ApiHandler.logs.Append("\n" + cmd.CommandText + DateTime.Now);
                 cmd.CommandType = CommandType.Text;
                 dr.InsertCommand = cmd;
                 try
@@ -61,17 +56,26 @@ namespace AllegroWEBAPI
                 {
                     if (flag)
                     {
+                        ApiHandler.logs.Append("\nWybrany aytrybut przez użytkownika nie jest ilościowy.\n");
                         MessageBoxResult result = MessageBox.Show("Wybrany przez Ciebie atrybut nie jest atrybutem ilościowym. Wybierz inny",
                                               "Błąd",
                                               MessageBoxButton.OK,
                                               MessageBoxImage.Error);
                         return;
                     }
+                    ApiHandler.logs.Append("\nW powyższej próbie wstawienie wartości do bazy wystąpił błąd. Wynika to ze niepoprawnego formatu aukcji, czyli błędnego uzupełnienia przez użytkownika sprzedającego parametrów. \n");
                     
                 }
                 cmd.Dispose();
     
             }
+
+            System.Diagnostics.Process.Start("CMD.exe", "/C Rscript Script.R " + MainWindow.categoryName + " " + MainWindow.categoryTree.Replace(" ",""));
+
+            while (!Directory.Exists("C:/Users/Tieburach/Desktop/" + MainWindow.categoryName)) {
+               System.Threading.Thread.Sleep(200);
+            }
+
             Window1 window1 = new Window1();
             window1.Show();
         }
